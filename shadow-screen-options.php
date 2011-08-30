@@ -3,7 +3,7 @@
 Plugin Name: Shadow Screen Options
 Plugin URI: http://uncommoncontent.com/wordpress/plugins/shadow-screen-options
 Description: Create a shadow system of blog-specific screen layout options in a multisite environment. 
-Version: 0.1
+Version: 0.2
 Author: Jennifer M. Dodd
 Author URI: http://bajada.net
 */ 
@@ -27,11 +27,28 @@ Author URI: http://bajada.net
 */
 
 
+function ucc_sso_needs_shadow( $meta_key ) {
+	$actions = array( 'closedpostboxes', 'metaboxhidden', 'meta-box-order', 'screen-layout' );
+	$objects = array( 'post', 'page', 'link', 'nav-menus', 'dashboard' );
+
+	// Fix screen_layout issue.
+	$meta_key = str_replace( 'screen_layout', 'screen-layout', $meta_key );
+	$arr = explode( '_', $meta_key );
+	if ( 	isset( $arr[0] ) && in_array( $arr[0], $actions ) &&
+		isset( $arr[1] ) && in_array( $arr[1], $objects ) &&  
+		!isset( $arr[2] ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
 function ucc_sso_update_user_metadata( $meta_type = null, $user_id, $meta_key, $meta_value, $prev_value = '' ) {
 	global $blog_id;
  
 	$prefix = 'ucc_sso_' . $blog_id . '_';
-	if ( preg_match( '#^(closedpostboxes|metaboxhidden|meta-box-order|screen_layout)_(post|page|link|nav-menus|dashboard)$#', $meta_key ) ) {
+	if ( ucc_sso_needs_shadow( $meta_key ) ) {
 		$meta_key = $prefix . $meta_key;
 		$result = update_user_meta( $user_id, $meta_key, $meta_value, $prev_value = '' );
 		return $result;
@@ -46,8 +63,7 @@ function ucc_sso_get_user_metadata( $meta_type = null, $user_id, $meta_key, $sin
 	global $blog_id;
  
 	$prefix = 'ucc_sso_' . $blog_id . '_';
-
-	if ( preg_match( '#^(closedpostboxes|metaboxhidden|meta-box-order|screen_layout)_(post|page|link|nav-menus|dashboard)$#', $meta_key ) ) {
+	if ( ucc_sso_needs_shadow( $meta_key ) ) { 
 		$meta_key = $prefix . $meta_key;
 		$result = get_user_meta( $user_id, $meta_key, $single );
 		return $result;
@@ -70,13 +86,13 @@ function ucc_sso_get_user_option( $result, $option, $user ) {
 
 
 function ucc_sso_init() {
-	$types = array( 'post', 'page', 'link', 'nav-menus', 'dashboard' );
+        $objects = array( 'post', 'page', 'link', 'nav-menus', 'dashboard' );
 
-	foreach ( $types as $type ) {
-		add_filter( 'get_user_option_closedpostboxes_' . $type, 'ucc_sso_get_user_option', 10, 3 );
-		add_filter( 'get_user_option_metaboxhidden_' . $type, 'ucc_sso_get_user_option', 10, 3 );
-		add_filter( 'get_user_option_meta-box-order_' . $type, 'ucc_sso_get_user_option', 10, 3 );
-		add_filter( 'get_user_option_screen_layout_' .  $type, 'ucc_sso_get_user_option', 10, 3 );
+	foreach ( $objects as $object ) {
+		add_filter( 'get_user_option_closedpostboxes_' . $object, 'ucc_sso_get_user_option', 10, 3 );
+		add_filter( 'get_user_option_metaboxhidden_' . $object, 'ucc_sso_get_user_option', 10, 3 );
+		add_filter( 'get_user_option_meta-box-order_' . $object, 'ucc_sso_get_user_option', 10, 3 );
+		add_filter( 'get_user_option_screen_layout_' .  $object, 'ucc_sso_get_user_option', 10, 3 );
 	}
 }
 add_filter( 'init', 'ucc_sso_init' ); 	

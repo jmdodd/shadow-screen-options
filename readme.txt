@@ -3,7 +3,7 @@ Contributors: jmdodd
 Tags: screen options, meta boxes, multisite
 Requires at least: 3.1.4 
 Tested up to: 3.2.1
-Stable tag: 0.1
+Stable tag: 0.2
 
 Create a shadow system of blog-specific screen layout options in a multisite 
 environment.
@@ -24,10 +24,17 @@ different sets of plugins active on each blog.
 
 == Changelog ==
 
+= 0.2 =
+* Replace regex with string operations.
+* Break out conditional test into function.
+
 = 0.1 =
 * Initial release. 
 
 == Upgrade Notice ==
+
+= 0.2 =
+* Make the code more efficient.
 
 = 0.1 = 
 * Initial release.
