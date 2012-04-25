@@ -3,7 +3,7 @@ Contributors: jmdodd
 Tags: screen options, meta boxes, multisite, network
 Requires at least: 3.1.4 
 Tested up to: 3.3.2
-Stable tag: 0.3
+Stable tag: 0.4
 
 Create a shadow system of blog-specific screen layout options in a multisite environment.
 
@@ -24,6 +24,9 @@ needed for individual blogs, or Network Activate.
 
 == Changelog ==
 
+= 0.4 =
+* Add comments to code. 
+
 = 0.3 =
 * General cleanup to object-oriented code.
 * Fix PHP notice on undefined offset: 0.
@@ -37,6 +40,9 @@ needed for individual blogs, or Network Activate.
 * Initial release. 
 
 == Upgrade Notice ==
+
+= 0.4 =
+* Comment code. 
 
 = 0.3 =
 * General cleanup.
