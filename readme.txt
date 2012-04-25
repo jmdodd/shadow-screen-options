@@ -1,28 +1,33 @@
 === Shadow Screen Options ===
 Contributors: jmdodd
-Tags: screen options, meta boxes, multisite
+Tags: screen options, meta boxes, multisite, network
 Requires at least: 3.1.4 
-Tested up to: 3.2.1
-Stable tag: 0.2
+Tested up to: 3.3.2
+Stable tag: 0.3
 
-Create a shadow system of blog-specific screen layout options in a multisite 
-environment.
+Create a shadow system of blog-specific screen layout options in a multisite environment.
 
 == Description ==
 
-Shadow Screen Options is used in a multisite environment to allow blog-specific
-screen layout options for users. Blogs on which it is not active will share 
-user-set preferences (the default WordPress behavior).
+Shadow Screen Options is used in a multisite environment to allow blog-specific screen layout options 
+for users. Blogs on which it is not active will share user-set preferences (the default 
+WordPress behavior).
 
-This is most useful in situations where users have several blogs, and have
-different sets of plugins active on each blog.
+This is most useful in situations where users have several blogs, and have different sets of plugins 
+active on each blog.
 
 == Installation ==
 
-1. Upload the directory `shadow-screen-options` and its contents to the `/wp-content/plugins/` directory.
-1. Activate the plugin through the 'Plugins' menu in WordPress.
+1. Upload the `shadow-screen-options` folder and its contents your `/wp-content/plugins/` directory.
+1. Activate the "Shadow Screen Options" plugin in your WordPress Plugins administration interface as
+needed for individual blogs, or Network Activate.
 
 == Changelog ==
+
+= 0.3 =
+* General cleanup to object-oriented code.
+* Fix PHP notice on undefined offset: 0.
+* WordPress version bump.
 
 = 0.2 =
 * Replace regex with string operations.
@@ -32,6 +37,9 @@ different sets of plugins active on each blog.
 * Initial release. 
 
 == Upgrade Notice ==
+
+= 0.3 =
+* General cleanup.
 
 = 0.2 =
 * Make the code more efficient.
