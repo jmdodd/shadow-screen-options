@@ -2,7 +2,7 @@
 /*
 Plugin Name: Shadow Screen Options
 Description: Create a shadow system of blog-specific screen layout options in a multisite environment. 
-Version: 0.3
+Version: 0.4
 Author: Jennifer M. Dodd
 Author URI: http://uncommoncontent.com/
 */ 
@@ -53,6 +53,7 @@ class UCC_Shadow_Screen_Options {
 		}
 	}
 
+	// True if meta_key needs a shadow key generated.
 	public function needs_shadow( $meta_key ) {
 		foreach ( $this->actions as $action ) {
 			if ( strpos( $meta_key, $action ) === 0 ) {
@@ -65,6 +66,7 @@ class UCC_Shadow_Screen_Options {
 		return false;
 	}
 
+	// Return shadow meta_key when meta_key is requested.
 	public function get_user_metadata( $meta_type = null, $user_id, $meta_key, $single ) {
 		if ( $this->needs_shadow( $meta_key ) ) {
 			$meta_key = $this->prefix . $meta_key;
@@ -78,6 +80,7 @@ class UCC_Shadow_Screen_Options {
 		}
 	}
 
+	// Update shadow meta_key when meta_key is sent.
 	public function update_user_metadata( $meta_type = null, $user_id, $meta_key, $meta_value, $prev_value = '' ) {
 		if ( $this->needs_shadow( $meta_key ) ) {
 			$meta_key = $this->prefix . $meta_key;
@@ -88,6 +91,7 @@ class UCC_Shadow_Screen_Options {
 		}
 	}
  
+	// Change meta_key requests into shadow meta_key requests.
 	public function get_user_option( $result, $option, $user ) {
 		$option = $this->prefix . $option;
 		$result = get_user_option( $option, $user->ID );
