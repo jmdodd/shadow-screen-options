@@ -2,13 +2,13 @@
 /*
 Plugin Name: Shadow Screen Options
 Description: Create a shadow system of blog-specific screen layout options in a multisite environment. 
-Version: 0.4
+Version: 0.4.1
 Author: Jennifer M. Dodd
 Author URI: http://uncommoncontent.com/
 */ 
 
 /*
-	Copyright 2012  Jennifer M. Dodd  <jmdodd@gmail.com>
+	Copyright 2012 Jennifer M. Dodd <jmdodd@gmail.com>
 
 	This program is free software; you can redistribute it and/or modify
    	it under the terms of the GNU General Public License, version 2, as 

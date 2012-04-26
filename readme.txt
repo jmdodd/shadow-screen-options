@@ -3,7 +3,7 @@ Contributors: jmdodd
 Tags: screen options, meta boxes, multisite, network
 Requires at least: 3.1.4 
 Tested up to: 3.3.2
-Stable tag: 0.4
+Stable tag: 0.4.1
 
 Create a shadow system of blog-specific screen layout options in a multisite environment.
 
@@ -18,11 +18,14 @@ active on each blog.
 
 == Installation ==
 
-1. Upload the `shadow-screen-options` folder and its contents your `/wp-content/plugins/` directory.
+1. Upload the `shadow-screen-options` folder and its contents to your `/wp-content/plugins/` directory.
 1. Activate the "Shadow Screen Options" plugin in your WordPress Plugins administration interface as
 needed for individual blogs, or Network Activate.
 
 == Changelog ==
+
+= 0.4.1 =
+* Update readme.txt.
 
 = 0.4 =
 * Add comments to code. 
@@ -40,6 +43,9 @@ needed for individual blogs, or Network Activate.
 * Initial release. 
 
 == Upgrade Notice ==
+
+= 0.4.1 =
+* Update readme.txt.
 
 = 0.4 =
 * Comment code. 
